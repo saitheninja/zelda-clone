@@ -38,7 +38,9 @@ func state_default():
 
 func state_swing():
 	anim_switch("idle")
+	movement_loop()
 	damage_loop()
+	movedir = dir.centre
 
 func controls_loop():
 	var LEFT = Input.is_action_pressed("ui_left")
