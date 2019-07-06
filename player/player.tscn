@@ -215,7 +215,8 @@ extents = Vector2( 7, 8 )
 
 [node name="player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-SPEED = null
+SPEED = 70
+MAXHEALTH = 16
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

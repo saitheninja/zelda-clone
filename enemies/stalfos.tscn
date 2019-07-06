@@ -28,6 +28,7 @@ extents = Vector2( 7, 7 )
 [node name="stalfos" type="KinematicBody2D"]
 script = ExtResource( 1 )
 SPEED = 40
+MAXHEALTH = 1
 
 [node name="anim" type="AnimationPlayer" parent="."]
 playback_speed = 4.0

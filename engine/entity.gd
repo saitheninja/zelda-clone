@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-const MAXHEALTH = 2
 var TYPE  = "ENEMY"
 export(int) var SPEED
 
@@ -8,7 +7,8 @@ var movedir = Vector2(0,0)
 var knockdir = Vector2(0,0)
 var spritedir = "down"
 
-var health = MAXHEALTH
+export(int) var MAXHEALTH
+onready var health = MAXHEALTH
 # any time hitstun is ticking down, the thing is in hitstun - immune to damage
 var hitstun = 0
 var texture_default = null

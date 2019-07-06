@@ -1,6 +1,6 @@
 extends "res://engine/entity.gd"
 
-const DAMAGE = 1
+const DAMAGE = 0.5 
 
 var movetimer_length = 15
 var movetimer = 0
