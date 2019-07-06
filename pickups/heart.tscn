@@ -1,16 +1,19 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://pickups/key.gd" type="Script" id=1]
-[ext_resource path="res://pickups/key.png" type="Texture" id=2]
+[ext_resource path="res://pickups/heart.gd" type="Script" id=1]
+[ext_resource path="res://ui/hearts.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3, 6 )
+extents = Vector2( 3, 3 )
 
-[node name="key" type="Area2D"]
+[node name="heart" type="Area2D"]
 script = ExtResource( 1 )
+disappears = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+hframes = 5
+frame = 4
 __meta__ = {
 "_edit_lock_": true
 }

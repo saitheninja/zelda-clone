@@ -48,15 +48,18 @@ func anim_switch(animation):
 		$anim.play(newanim)
 
 func damage_loop():
+	health = min(MAXHEALTH, health)
 	if hitstun > 0:
 		hitstun -= 1
 		$Sprite.texture = texture_hurt
 	else:
 		$Sprite.texture = texture_default
 		if TYPE == "ENEMY" && health <= 0:
-			var death_animation = preload("res://enemies/enemy_death.tscn").instance()
-			get_parent().add_child(death_animation)
-			death_animation.global_transform = global_transform
+			# choose random int between 0 and 3, so 25% chance
+			var drop = randi() % 3
+			if drop == 0:
+				instance_scene(preload("res://pickups/heart.tscn"))
+			instance_scene(preload("res://enemies/enemy_death.tscn"))
 			queue_free()
 	# returns a list of every kinematic or static body that the hitbox is colliding with
 	# for every body in that list
@@ -78,3 +81,11 @@ func use_item(item):
 	# check how many of that item exists, delete it if it's higher than maxamount
 	if get_tree().get_nodes_in_group(str(newitem.get_name(), self)).size() > newitem.maxamount:
 		newitem.queue_free()
+
+func instance_scene(scene):
+	# instance new scene
+	var new_scene = scene.instance()
+	# set it to the right position
+	new_scene.global_position = global_position
+	# add it to scene tree
+	get_parent().add_child(new_scene)
