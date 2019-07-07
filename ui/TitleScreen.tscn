@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ui/title_screen.gd" type="Script" id=1]
+[ext_resource path="res://player/player.png" type="Texture" id=2]
+[ext_resource path="res://ui/buttons/NewGameButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://areas/test.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/buttons/ContinueButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/menus/Continue.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/buttons/OptionsButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/menus/Options.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/gameboy_8.tres" type="DynamicFont" id=9]
+[ext_resource path="res://ui/fades/FadeIn.tscn" type="PackedScene" id=10]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 144.0
+margin_bottom = 128.0
+
+[node name="Logo" type="TextureRect" parent="Menu"]
+margin_right = 128.0
+margin_bottom = 32.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="CentreRow" type="HBoxContainer" parent="Menu"]
+margin_top = 36.0
+margin_right = 128.0
+margin_bottom = 104.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="Menu/CentreRow"]
+margin_right = 128.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 4
+alignment = 1
+
+[node name="NewGameButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 3 )]
+margin_bottom = 20.0
+scene_to_load = ExtResource( 4 )
+
+[node name="ContinueButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 24.0
+margin_bottom = 44.0
+scene_to_load = ExtResource( 6 )
+
+[node name="OptionsButton" parent="Menu/CentreRow/Buttons" instance=ExtResource( 7 )]
+margin_top = 48.0
+margin_bottom = 68.0
+scene_to_load = ExtResource( 8 )
+
+[node name="VersionLabel" type="Label" parent="Menu"]
+margin_top = 108.0
+margin_right = 128.0
+margin_bottom = 118.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Version 0.1"
+align = 2
+valign = 1
+
+[node name="FadeIn" parent="." instance=ExtResource( 10 )]
+visible = false
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
