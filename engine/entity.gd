@@ -69,6 +69,8 @@ func damage_loop():
 		if hitstun == 0 and body.get("DAMAGE") != null and body.get("TYPE") != TYPE:
 			health -= body.get("DAMAGE")
 			hitstun = 10
+			# frame freeze in ms
+			#OS.delay_msec(50)
 			# transform.origin is the x and y
 			knockdir = global_transform.origin - body.global_transform.origin
 
