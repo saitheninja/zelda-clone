@@ -1,5 +1,8 @@
 extends KinematicBody2D
 
+signal camera_shake_requested
+signal frame_freeze_requested
+
 var TYPE  = "ENEMY"
 export(int) var SPEED
 
@@ -17,6 +20,7 @@ var texture_hurt = null
 func _ready():
 	if TYPE == "ENEMY":
 		set_collision_mask_bit(1,1)
+		# only turn on enemies when in the room
 		set_physics_process(false)
 	texture_default = $Sprite.texture
 	texture_hurt = load($Sprite.texture.get_path().replace(".png","_hurt.png"))
@@ -70,7 +74,8 @@ func damage_loop():
 			health -= body.get("DAMAGE")
 			hitstun = 10
 			# frame freeze in ms
-			#OS.delay_msec(50)
+			emit_signal("frame_freeze_requested")
+			emit_signal("camera_shake_requested")
 			# transform.origin is the x and y
 			knockdir = global_transform.origin - body.global_transform.origin
 

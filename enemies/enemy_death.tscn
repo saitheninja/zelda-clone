@@ -28,4 +28,3 @@ anims/default = SubResource( 1 )
 texture = ExtResource( 2 )
 hframes = 8
 frame = 7
-

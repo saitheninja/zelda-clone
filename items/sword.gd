@@ -3,7 +3,6 @@ extends Node2D
 # types that are the same can't hurt each other, rememeber
 var TYPE = null
 const DAMAGE = 0.5 
-
 # how many of that item can exist for that entity, that can be active at once
 # e.g. max 3 arrows in the air at a time
 var maxamount = 1

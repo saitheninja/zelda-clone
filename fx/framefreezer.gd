@@ -1,8 +1,7 @@
 extends Node
 
 export var delay_mseconds : = 15
-
-var enabled : = false
+export var enabled : = false
 
 func _ready() -> void:
 	for frame_freezer in get_tree().get_nodes_in_group("frame_freezer"):
